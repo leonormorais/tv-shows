@@ -23,8 +23,8 @@ public class JpaActorDao extends GenericJpaDao<Actor> implements ActorDao {
             CriteriaBuilder builder = em.getCriteriaBuilder();
             CriteriaQuery<Actor> criteriaQuery = builder.createQuery(modelType);
             Root<Actor> root = criteriaQuery.from(modelType);
-//            criteriaQuery.select(root);
-//            criteriaQuery.where(builder.equal(root.get(Actor_.name), name));
+            criteriaQuery.select(root);
+            criteriaQuery.where(builder.equal(root.get(Actor_.name), name));
 
             return em.createQuery(criteriaQuery).getSingleResult();
 
